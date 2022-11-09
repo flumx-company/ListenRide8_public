@@ -1,0 +1,203 @@
+@import 'variables';
+@import 'utils/utils';
+
+mat-progress-bar {
+  bottom: 0;
+  position: fixed;
+  z-index: 100;
+}
+
+.wrap-search-page-layout {
+  display: flex;
+  flex-direction: row;
+
+  @include if-smaller-than(sm) {
+    flex-direction: column;
+  }
+
+  .map-container {
+    flex: 0 0 30%;
+
+    @include if-smaller-than(xl) {
+      flex: 1;
+    }
+
+    agm-map {
+      display: flex;
+      height: calc(100vh + 20rem);
+      width: 30vw;
+
+      @include if-smaller-than(xl) {
+        flex: 1;
+        width: 100vw;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex: 0 0 70%;
+    flex-direction: column;
+    margin: 0 auto;
+    overflow: scroll;
+
+    @include if-smaller-than(sm) {
+      flex: 0 0 100%;
+      height: auto;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      max-width: 1200px;
+      width: 100%;
+
+      @include if-smaller-than(sm) {
+        border-top: 0.1rem solid $light-grey;
+        display: flex;
+      }
+
+      .sub-toolbar {
+        border-bottom: 0.1rem solid $light-grey;
+        border-top: 0.1rem solid $light-grey;
+        display: flex;
+        flex: 1 1 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 1rem 0;
+
+        @include if-smaller-than(sm) {
+          border: none;
+        }
+      }
+
+      .bikes-for-rent,
+      .bikes-for-groups {
+        display: flex;
+        font-weight: 400;
+        padding: 1rem;
+
+        @include if-smaller-than(sm) {
+          font-size: $small-fontsize !important;
+        }
+      }
+
+      .bikes-for {
+        &-rent {
+          align-self: flex-start;
+          color: $dark-text-color;
+          font-size: $h5-fontsize;
+        }
+
+        &-groups {
+          align-self: flex-end;
+          color: $submit-button-color;
+          font-size: $h6-fontsize;
+        }
+      }
+    }
+
+    .mobile-toolbar {
+      display: flex;
+      flex-direction: row;
+      padding: 1.6rem 0.4rem;
+      transition: all ease-out 0.7s;
+      width: 100vw;
+
+      @include if-smaller-than(sm) {
+        display: flex;
+      }
+
+      .toggle {
+        background-color: $white-font-color;
+        border: 0.1rem solid $light-grey;
+        border-radius: 0.2rem;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        padding: 1rem 0.5rem;
+
+        span {
+          color: $dark-text-color;
+          font-size: $small-fontsize;
+          font-weight: bold;
+          letter-spacing: 0.5px;
+          line-height: 1.4rem;
+          margin-left: 0.4rem;
+          margin-top: 0.4rem;
+          text-transform: uppercase;
+        }
+      }
+
+      .toggle-filters {
+        align-self: flex-start;
+
+        .mat-icon {
+          color: $submit-button-color;
+        }
+      }
+
+      .toggle-sorting {
+        align-self: flex-start;
+        margin-left: 1rem;
+        width: 4rem;
+
+        .mat-icon {
+          color: $submit-button-color;
+        }
+      }
+
+      .toggle-map {
+        align-self: flex-end;
+        margin-left: auto;
+
+        .mat-icon {
+          color: $main-blue;
+        }
+      }
+    }
+
+    .bike-grid {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+
+@include if-bigger-than(xl) {
+  .bike-tile-grid {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+@media (min-width: $device-md) and (max-width: $device-lg) {
+  .bike-tile-grid {
+    flex: 0 0 33%;
+    max-width: 33%;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+}
+
+@include if-bigger-than(xl) {
+  .bike-tile-grid {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+}
+
+@include if-smaller-than(xl) {
+  .wrap-search-page-layout {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.wrap-bike-tile-grid {
+  height: 100vh;
+}

@@ -1,0 +1,69 @@
+<div class="booking-overview-container" *ngIf="bookingOverview">
+  <div class="justify-content-between d-flex">
+    <span class="overview-line">
+      <span>
+        {{ bookingOverview.daysAmount }}
+        {{ bookingOverview.periodLabel | translate }} x
+        {{ bookingOverview.price | lnr_currency }}
+      </span>
+      <mat-icon
+        matTooltip="{{ 'calendar.info-subtotal' | translate | strip_html }}"
+      >
+        info_outline
+      </mat-icon>
+    </span>
+    <span>
+      {{ bookingOverview.subtotal | lnr_currency }}
+    </span>
+  </div>
+  <div class="justify-content-between d-flex" *ngIf="bookingOverview.discount">
+    <span class="overview-line">
+      <span>
+        {{ 'list.pricing.discount' | translate }}
+        {{ bookingOverview.daysAmount }}
+        {{ bookingOverview.periodLabel | translate }} x
+        {{ bookingOverview.averageDiscount | lnr_currency }}
+      </span>
+      <mat-icon
+        matTooltip="{{ 'calendar.info-discount' | translate | strip_html }}"
+      >
+        info_outline
+      </mat-icon>
+    </span>
+    <span> −{{ bookingOverview.discount | lnr_currency }} </span>
+  </div>
+  <div
+    class="justify-content-between d-flex"
+    *ngIf="bookingOverview.serviceFee"
+  >
+    <span class="overview-line">
+      <span>
+        {{
+          (isInsuranceEnabled ? 'shared.basic-fee' : 'shared.lnr-fee')
+            | translate
+        }}
+      </span>
+      <mat-icon
+        matTooltip="{{ 'calendar.info-service-fee' | translate | strip_html }}"
+      >
+        info_outline
+      </mat-icon>
+    </span>
+    <span> {{ bookingOverview.serviceFee | lnr_currency }} </span>
+  </div>
+  <div class="justify-content-between d-flex" *ngIf="isPremiumInsuranceEnabled">
+    <span>
+      {{ 'booking.overview.premium_insurance' | translate }}
+      {{ bookingOverview.daysAmount }}
+      {{ bookingOverview.periodLabel | translate }} x
+      {{ bookingOverview.premiumInsurancePrice | lnr_currency }}
+    </span>
+    <span> {{ bookingOverview.premiumInsuranceTotal | lnr_currency }} </span>
+  </div>
+  <div class="justify-content-between d-flex" *ngIf="bookingOverview.total">
+    <span>
+      {{ 'shared.total' | translate }}
+    </span>
+    <span> {{ bookingOverview.total | lnr_currency }} </span>
+  </div>
+</div>

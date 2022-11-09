@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row filters-toolbar">
+    <div class="col-2 justify-content-start">
+      <div class="filters-close" (click)="close()">
+        <mat-icon>close</mat-icon>
+      </div>
+    </div>
+    <div class="col-8 filters-label">
+      <span class="text-uppercase">{{ 'search.filter' | translate }}</span>
+    </div>
+    <div class="col-2">
+      <span (click)="reset()">
+        {{ 'list.pricing.reset-prices' | translate }}
+      </span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="filtersForm">
+        <lnr-date-range-picker
+          [datesRange]="selectedDates"
+          (datesRangeSet)="onDatesRangeSet($event)"
+          class="date-range-picker"
+        >
+        </lnr-date-range-picker>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'shared.size' | translate }}</mat-label>
+          <mat-select
+            placeholder="{{ 'shared.size' | translate }}"
+            formControlName="size"
+          >
+            <mat-option *ngFor="let size of sizeList" [value]="size.value">
+              {{ size.text }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <lnr-category-multiselect
+          class="wrap-lnr-category-multiselect"
+          [label]="'search.category' | translate"
+          [labelIcon]="false"
+          [inputSelectedCategories]="filtersForm.get('type').value"
+          #categorySelect
+        >
+        </lnr-category-multiselect>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'list.details.brand' | translate }}</mat-label>
+          <mat-select
+            placeholder="{{ 'search.category' | translate }}"
+            formControlName="brand"
+            multiple
+          >
+            <mat-option *ngFor="let brand of brandList" [value]="brand.value">{{
+              brand.text
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="sorting-filter">
+          <mat-label>{{ 'search.sort' | translate }}</mat-label>
+          <mat-select placeholder="Type" formControlName="sorting">
+            <mat-option *ngFor="let sort of sortList" [value]="sort.value">
+              {{ sort.text }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-flat-button class="btn-clear-filters" (click)="reset()">
+          <mat-icon
+            aria-hidden="false"
+            svgIcon="filter-remove-outline"
+            aria-label="reset icon"
+          ></mat-icon>
+          {{ 'search.clear_filters' | translate }}
+        </button>
+        <div class="row submit-container">
+          <button
+            mat-flat-button
+            class="btn-filter-submit"
+            color="primary"
+            (click)="applyFilters()"
+          >
+            {{ 'shared.apply' | translate }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

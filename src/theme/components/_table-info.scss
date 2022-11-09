@@ -1,0 +1,23 @@
+table.lnr-table-info {
+  tr {
+    td {
+      color: #32363b;
+      font-size: 14px;
+      opacity: 0.9;
+      padding: 4px 24px 4px 0;
+      vertical-align: top;
+
+      &:first-child {
+        min-width: 95px;
+        opacity: 0.56;
+      }
+
+      .divider {
+        background: #f0f0f1;
+        height: 1px;
+        margin: 10px 0;
+        width: 100%;
+      }
+    }
+  }
+}

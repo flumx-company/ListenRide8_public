@@ -1,0 +1,238 @@
+<form class="pictureLoader" [formGroup]="paymentMethodFormGroup">
+  <div class="row" *ngIf="!isPaymentRequestFlow">
+    <div class="col-sm-12 col-md-2 offset-md-1" *ngIf="!isPaymentRequestFlow">
+      <h6 [innerHTML]="'booking.payment.tab' | translate"></h6>
+    </div>
+
+    <ng-container *ngIf="mode === 'view' && !isPaymentRequestFlow">
+      <div class="col-sm-12 col-md-8">
+        <div class="row">
+          <div class="col-sm-10">
+            <table class="lnr-table-info">
+              <tr>
+                <td>Type:</td>
+                <td>{{ getType }}</td>
+              </tr>
+
+              <tr>
+                <td>
+                  {{
+                    (getType === 'credit-card'
+                      ? 'booking.payment.card_number'
+                      : 'shared.payment_type.pay-pal_account'
+                    ) | translate
+                  }}
+                </td>
+                <td>{{ currentPayment }}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-sm-2 lnr-text-align-r">
+            <button mat-button class="lnr-btn-edit" (click)="openUpdate()">
+              <mat-icon>edit</mat-icon>
+              {{ 'listingCard.edit_bike' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <div class="col-sm-12 col-md-8" *ngIf="mode === 'update'">
+      <p [innerHTML]="'settings.payment_method_description' | translate"></p>
+      <p
+        [innerHTML]="'settings.pick_payment_method' | translate"
+        class="font-weight-bold"
+      ></p>
+      <div class="row col-sm-12 col-md-8">
+        <div class="row col-sm-6 col-md-6 align-items-center">
+          <input
+            type="radio"
+            formControlName="payment"
+            name="payment"
+            id="credit_card_set"
+            value="credit_card"
+            [(ngModel)]="payment"
+          />
+          <label
+            class="ml-4"
+            for="credit_card_set"
+            [innerHTML]="'shared.payment_type.credit_card' | translate"
+          ></label>
+        </div>
+        <div class="row col-sm-6 col-md-6 align-items-center">
+          <input
+            type="radio"
+            formControlName="payment"
+            name="payment"
+            id="paypal_set"
+            value="paypal"
+            [(ngModel)]="payment"
+          />
+          <label
+            class="ml-4"
+            for="paypal_set"
+            [innerHTML]="'shared.payment_type.pay-pal_account' | translate"
+          ></label>
+        </div>
+      </div>
+
+      <lnr-payment-method-credit-card
+        *ngIf="payment === 'credit_card'"
+        [isPaymentRequestFlow]="isPaymentRequestFlow"
+        [mode]="mode"
+        (onAuthorize)="!isPaymentRequestFlow && goToNext()"
+        (onClose)="mode = 'view'; payment = ''"
+        class="lnr-mrg-btm"
+        [user]="user"
+      >
+      </lnr-payment-method-credit-card>
+      <lnr-payment-method-pay-pal
+        (onAuthorize)="goToNext()"
+        (onCancel)="mode = 'view'; payment = ''"
+        [user]="user"
+        *ngIf="payment === 'paypal'"
+      >
+      </lnr-payment-method-pay-pal>
+
+      <div class="col-sm-12 col-md-6 mt-4">
+        <small [innerHTML]="'forms.privacy_policy' | translate"></small>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isPaymentRequestFlow">
+    <h3
+      class="bold"
+      *ngIf="mode === 'update' && isPaymentRequestFlow"
+      [innerHTML]="'booking.payment.select_method' | translate"
+    ></h3>
+    <p
+      *ngIf="mode === 'update'"
+      [innerHTML]="'booking.payment.subtitle' | translate"
+    ></p>
+    <div
+      class="paymentMethod"
+      *ngIf="mode === 'update' && isPaymentRequestFlow"
+    >
+      <div class="pay">
+        <div>
+          <div class="payment-change">
+            <div>
+              <input
+                type="radio"
+                formControlName="payment"
+                id="credit_card"
+                value="credit_card"
+                [(ngModel)]="payment"
+              />
+              <label for="credit_card" class="custom-checkbox"></label>
+            </div>
+            <span
+              class="bold"
+              [innerHTML]="'shared.payment_type.credit_card' | translate"
+            ></span>
+          </div>
+          <div>
+            <img [src]="mastercard" alt="mastercard" />
+            <img [src]="visa" alt="visa" />
+          </div>
+        </div>
+        <lnr-payment-method-credit-card
+          *ngIf="payment === 'credit_card'"
+          [isPaymentRequestFlow]="isPaymentRequestFlow"
+          [mode]="mode"
+          (onAuthorize)="!isPaymentRequestFlow && goToNext()"
+          class="lnr-mrg-btm"
+          [user]="user"
+        >
+        </lnr-payment-method-credit-card>
+      </div>
+
+      <div class="pay">
+        <div>
+          <div class="payment-change">
+            <div>
+              <input
+                type="radio"
+                formControlName="payment"
+                id="paypal"
+                value="paypal"
+                [(ngModel)]="payment"
+              />
+              <label for="paypal" class="custom-checkbox"></label>
+            </div>
+            <span
+              class="bold"
+              [innerHTML]="'shared.payment_type.pay_pal_account' | translate"
+            ></span>
+          </div>
+          <img [src]="paypal" alt="paypal" />
+        </div>
+        <lnr-payment-method-pay-pal
+          (onAuthorize)="goToNext()"
+          [user]="user"
+          *ngIf="payment === 'paypal'"
+          [isPaymentRequestFlow]="isPaymentRequestFlow"
+        >
+        </lnr-payment-method-pay-pal>
+      </div>
+    </div>
+    <div
+      *ngIf="
+        user.paymentMethod &&
+        mode === 'update' &&
+        isPaymentRequestFlow &&
+        getType
+      "
+      class="current-paymentMethod"
+    >
+      <h3
+        class="bold"
+        [innerHTML]="'booking.payment.current-method' | translate"
+      ></h3>
+      <div class="paymentMethod" *ngIf="getType">
+        <div class="pay current">
+          <div>
+            <div class="payment-change">
+              <div>
+                <input
+                  type="radio"
+                  formControlName="payment"
+                  id="credit_card_current"
+                  value="credit_card_current"
+                  [(ngModel)]="payment"
+                />
+                <label
+                  for="credit_card_current"
+                  class="custom-checkbox"
+                ></label>
+              </div>
+              <span class="bold" *ngIf="isCreditCard"
+                >Credit Card {{ currentPayment }}</span
+              >
+              <span class="bold" *ngIf="isPayPal"
+                >PayPal {{ currentPayment }}</span
+              >
+            </div>
+            <div>
+              <img
+                *ngIf="getType === 'credit-card'"
+                [src]="mastercard"
+                alt="mastercard"
+              />
+              <img *ngIf="getType === 'credit-card'" [src]="visa" alt="visa" />
+              <img
+                *ngIf="getType === 'paypal-account'"
+                [src]="paypal"
+                alt="paypal"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 mt-4">
+      <small [innerHTML]="'forms.privacy_policy' | translate"></small>
+    </div>
+  </div>
+</form>

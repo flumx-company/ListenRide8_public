@@ -1,0 +1,66 @@
+@import 'variables';
+@import 'utils/utils';
+@import '~swiper/css/swiper.min.css';
+
+.home-page {
+  &_content {
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: start;
+
+    .wrap-main-img {
+      margin-left: -4rem;
+      position: relative;
+      z-index: 0;
+
+      img {
+        border-radius: $border-radius;
+        max-height: 48rem;
+        min-height: 32rem;
+        width: 98%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &_subtitles {
+    color: $dark-text-color;
+    font-size: 2.6rem;
+  }
+}
+
+@include if-smaller-than(sm) {
+  .home-page {
+    &_subtitles {
+      font-size: 2.3rem;
+    }
+  }
+
+  .wrap-searching-form {
+    margin-bottom: -10rem;
+  }
+
+  .wrap-events-block {
+    margin-top: 4rem;
+  }
+}
+
+.wrap-main-img-mobile {
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  min-height: 40rem;
+  width: 100%;
+
+  .home-page_subtitles {
+    color: $white-font-color;
+    font-size: 3.2rem;
+  }
+}
+
+.wrap-searching-form {
+  padding: 2rem;
+  width: 100%;
+}

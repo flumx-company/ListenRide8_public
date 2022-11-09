@@ -1,0 +1,87 @@
+@import 'variables';
+@import 'utils/utils';
+
+.wrap-top-menu {
+  ul {
+    list-style-type: none;
+    margin: 0;
+  }
+
+  .header-list-item {
+    a {
+      color: $white-font-color;
+      font-size: $small-fontsize;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      text-decoration: none;
+    }
+  }
+
+  .selected {
+    mat-icon {
+      transform: rotate(-180deg);
+    }
+  }
+
+  &_mobile {
+    display: none;
+    @include if-smaller-than(xl) {
+      display: block;
+    }
+  }
+
+  &_desktop {
+    display: block;
+    @include if-smaller-than(xl) {
+      display: none;
+    }
+  }
+}
+
+@include if-smaller-than(xl) {
+  .wrap-top-menu {
+    .mat-drawer-container {
+      background: none;
+    }
+
+    .mat-list-item {
+      color: $white-font-color;
+      display: flex;
+      justify-content: center;
+    }
+
+    .mat-drawer {
+      background: $dark-background;
+      padding: 2rem;
+      right: 0;
+      width: 100%;
+    }
+  }
+}
+
+.user-avatar {
+  img {
+    border-radius: 50%;
+    max-width: 3.4rem;
+  }
+}
+
+.sidenav-user-avatar {
+  border-radius: 50%;
+  max-width: 7rem;
+}
+
+.wrap-sidenav {
+  position: initial;
+  text-align: right;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.content {
+  mat-icon {
+    margin-top: 1rem;
+  }
+}

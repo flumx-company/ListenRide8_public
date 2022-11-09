@@ -1,0 +1,48 @@
+<div class="wrap-form">
+  <h5 class="m-b-2">
+    {{ 'shared.start_search' | translate }}
+  </h5>
+  <form [formGroup]="searchingForm">
+    <div [ngClass]="{ 'd-block': activeSearch }" class="flex direction-column">
+      <div class="flex direction-row search-autocomplete">
+        <img
+          class="form-icon"
+          alt=""
+          src="../../../../../assets/images/icons/shared/map.svg"
+        />
+        <input
+          matInput
+          required
+          matGoogleMapsAutocomplete
+          placeholder="{{ 'shared.search-placeholder' | translate }}"
+          formControlName="location"
+          (onAutocompleteSelected)="onAutocompleteSelected($event)"
+        />
+      </div>
+      <lnr-date-range-picker
+        [datesRange]="selectedDates"
+        (datesRangeSet)="onDatesRangeSet($event)"
+        class="py-3 date-range-picker"
+      >
+      </lnr-date-range-picker>
+      <lnr-category-multiselect
+        class="m-b-2 category-multiselect"
+        [labelIcon]="true"
+        [label]="'shared.search_any_bike' | translate"
+      >
+      </lnr-category-multiselect>
+      <button
+        mat-flat-button
+        [disabled]="!searchingForm.valid"
+        (click)="onSubmit()"
+        color="accent"
+        class="m-t-1"
+        type="submit"
+      >
+        <span class=" white">
+          {{ 'shared.search' | translate }}
+        </span>
+      </button>
+    </div>
+  </form>
+</div>

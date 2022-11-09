@@ -1,0 +1,52 @@
+input[type='file'] {
+  display: none;
+}
+
+.lnr-img-file-upload-btn {
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  padding: 6px 12px;
+  text-align: center;
+  width: 100%;
+
+  mat-icon {
+    height: 135px;
+    width: 135px;
+  }
+}
+
+.lnr-img-file-upload-cropper {
+  .cropper {
+    display: flex;
+    justify-content: space-between;
+
+    image-cropper {
+      max-height: 300px;
+      max-width: 50%;
+    }
+
+    .preview {
+      position: relative;
+      width: 100%;
+
+      .image-wrapper {
+        bottom: 0;
+        height: 150px;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+
+        top: 0;
+        width: 100px;
+      }
+
+      img {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 100%;
+      }
+    }
+  }
+}

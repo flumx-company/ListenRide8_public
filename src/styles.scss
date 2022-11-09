@@ -1,0 +1,185 @@
+/*lnr theme global styles*/
+@import 'theme/index';
+
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~saturn-datepicker/theming';
+@import '~bootstrap-4-grid/scss/grid.scss';
+@import 'assets/scss/utils/utils';
+@import 'assets/scss/variables';
+@import 'assets/scss/typography';
+@import 'assets/scss/flexbox-helper';
+@import 'assets/scss/padding-helper';
+@import 'assets/scss/sizes-helper';
+@import '~swiper/css/swiper.min.css';
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix {
+  padding: 0.4em 0 !important;
+}
+
+::ng-deep .mat-form-field-label-wrapper {
+  top: -1.5em;
+}
+
+::ng-deep
+  .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
+  .mat-form-field-label {
+  transform: translateY(-1.1em) scale(0.75);
+  width: 133.33333%;
+}
+
+@include mat-core();
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  color: #555;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+.wrap-page {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.header,
+.main,
+.footer {
+  flex-shrink: 0;
+}
+
+:not(.mat-calendar-body-disabled):hover
+  > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-semi-selected),
+.cdk-keyboard-focused
+  .mat-calendar-body-active
+  > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-semi-selected),
+.cdk-program-focused
+  .mat-calendar-body-active
+  > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-semi-selected) {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+:not(.mat-calendar-body-disabled):hover > .mat-calendar-body-semi-selected,
+.cdk-keyboard-focused
+  .mat-calendar-body-active
+  > .mat-calendar-body-semi-selected,
+.cdk-program-focused
+  .mat-calendar-body-active
+  > .mat-calendar-body-semi-selected {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.mat-calendar-body-selected {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.mat-calendar-body-begin-range:not(.mat-calendar-body-end-range) {
+  background-color: #e8eaf6;
+  border-radius: 100% 0 0 100%;
+}
+
+.mat-calendar-body-end-range:not(.mat-calendar-body-begin-range) {
+  background-color: #e8eaf6;
+  border-radius: 0 100% 100% 0;
+}
+
+.mat-calendar-body
+  > tr
+  .mat-calendar-cell-semi-selected
+  ~ .mat-calendar-cell-semi-selected {
+  border-radius: 0;
+}
+
+.mat-calendar-cell-semi-selected {
+  background-color: #e8eaf6;
+}
+
+/* New stuff */
+.hdd-datepicker .mat-calendar-body-cell-content {
+  border-color: #ddd;
+  border-radius: 0;
+  height: 103%;
+  left: 0;
+  line-height: 0;
+  padding-top: 4px;
+  top: 0;
+  width: 103%;
+}
+
+.hdd-datepicker .mat-calendar-body-label {
+  display: none;
+}
+
+.hdd-datepicker .mat-calendar-body {
+  margin-top: 20px;
+}
+
+.hdd-datepicker.mat-calendar {
+  height: 320px !important;
+}
+
+.mat-form-field-outline-start {
+  border-radius: $border-radius 0 0 $border-radius !important;
+}
+
+.mat-form-field-outline-end {
+  border-radius: 0 $border-radius $border-radius 0 !important;
+}
+
+/* Styles for Swiper */
+
+.swiper-container {
+  .swiper-wrapper {
+    box-sizing: border-box;
+  }
+
+  .swiper-slide {
+    align-items: center;
+    -webkit-box-pack: center;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    background: $submit-button-color;
+    border-radius: 50%;
+    color: $white-font-color;
+    font-size: $h4-fontsize;
+    height: 4.8rem;
+    line-height: 1.6rem;
+    width: 4.8rem;
+    right: 1.6rem;
+
+    &::after {
+      font-size: $h4-fontsize;
+      font-weight: 900;
+    }
+  }
+
+  .swiper-button-disabled {
+    display: none;
+  }
+}

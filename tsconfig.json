@@ -1,0 +1,66 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@api/*": [
+        "app/core/services/api/*"
+      ],
+      "@auth/*": [
+        "app/core/modules/auth/*"
+      ],
+      "@core/*": [
+        "app/core/*"
+      ],
+      "@environment/*": [
+        "environments/*"
+      ],
+      "@enums/*": [
+        "app/core/enums/*"
+      ],
+      "@models/*": [
+        "app/core/models/*"
+      ],
+      "@user-verification/*": [
+        "app/core/modules/user-verification/*"
+      ],
+      "@validators/*": [
+        "app/core/validators/*"
+      ],
+      "@shared/*": [
+        "app/shared/*"
+      ],
+      "@modules/*": [
+        "app/modules/*"
+      ],
+      "@google/maps": [
+        "googlemaps"
+      ]
+    },
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "types": [
+      "node",
+      "googlemaps"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+//      "es2017.object",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}

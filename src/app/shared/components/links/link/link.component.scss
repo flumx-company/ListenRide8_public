@@ -1,0 +1,13 @@
+@import '../../../../../assets/scss/variables';
+
+.lnr-white-link {
+  font-size: $small-fontsize;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 2rem;
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    color: $light-grey;
+  }
+}

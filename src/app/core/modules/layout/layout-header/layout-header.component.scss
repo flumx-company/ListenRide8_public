@@ -1,0 +1,111 @@
+@import '../../../../../assets/scss/variables';
+
+.wrap-toolbar-component {
+  background-color: $main-blue;
+  color: $white-font-color;
+  max-height: 6rem;
+  width: 100%;
+
+  .wrap-search {
+    position: absolute;
+    z-index: 3;
+
+    mat-icon {
+      margin: 1rem 0 0 -3rem;
+    }
+  }
+}
+
+.logo {
+  width: 100%;
+
+  img {
+    height: 2rem;
+    margin: 2rem;
+    width: 12rem;
+  }
+}
+
+::ng-deep .mat-form-field-infix {
+  width: 100%;
+}
+
+.search-autocomplete {
+  align-items: center;
+  background: rgba($white-font-color, 0.8);
+  border-radius: 0.4rem;
+  color: $dark-text-color;
+  height: 4rem;
+  line-height: 4rem;
+  padding: 1.2rem;
+  width: 45rem;
+
+  input {
+    background: transparent;
+    border: none;
+    font-size: $small-fontsize;
+    width: 100%;
+
+    &:focus,
+    &:active {
+      border: none;
+    }
+  }
+}
+
+@media (min-width: $device-xl) {
+  ::ng-deep .search-autocomplete {
+    min-width: 60rem;
+  }
+}
+
+@media (min-width: $device-lg) {
+  .toolbar-component-container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: $device-md) {
+  .toolbar-component-container {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: $device-sm) {
+  .toolbar-component-container {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: $device-xs) {
+  .wrap-toolbar-component {
+    height: 5.6rem;
+  }
+
+  .toolbar-component-container {
+    max-width: 540px;
+  }
+
+  .logo img {
+    margin: 1.4rem;
+  }
+
+  .search-autocomplete {
+    width: 25rem;
+  }
+}
+
+.toolbar-component-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  width: 100%;
+}
+
+@media (min-width: $device-xs) and (max-width: $device-sm) {
+  .search-autocomplete {
+    margin: 1.2rem;
+    width: 35rem;
+  }
+}

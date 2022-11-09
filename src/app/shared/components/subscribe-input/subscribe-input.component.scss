@@ -1,0 +1,41 @@
+@import '../../../../assets/scss/variables';
+
+.subscribe-form {
+  margin-top: -1rem;
+
+  &_input {
+    white-space: nowrap;
+
+    input {
+      border: 0.1rem solid $grey-background;
+      border-bottom-left-radius: 0.4rem;
+      border-top-left-radius: 0.4rem;
+      color: $white-font-color;
+      font-size: $small-fontsize;
+      padding: 1rem;
+      width: 18rem;
+
+      &::placeholder {
+        color: $light-text-color;
+        font-weight: 300;
+      }
+    }
+  }
+
+  &_button {
+    background: $submit-button-color;
+    border: none;
+    border-bottom-right-radius: 0.4rem;
+    border-top-right-radius: 0.4rem;
+    height: 3.7rem;
+    width: 4rem;
+  }
+
+  .mat-form-field-invalid .mat-input-element {
+    border: 0.1rem solid $error-color !important;
+  }
+
+  .mat-input-element.ng-touched.ng-valid {
+    border: 0.1rem solid $submit-button-color !important;
+  }
+}

@@ -1,0 +1,12 @@
+@import '../../../../../../../assets/scss/variables';
+
+.select-languages {
+  mat-select {
+    height: inherit;
+    width: 14rem;
+
+    .mat-select-value-text {
+      color: $white-font-color;
+    }
+  }
+}

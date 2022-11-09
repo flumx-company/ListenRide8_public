@@ -1,0 +1,282 @@
+@import 'variables';
+@import 'utils/utils';
+
+.bike-tile {
+  background-color: white;
+  border: 0.1rem solid $light-grey;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  height: auto;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  position: relative;
+  width: 100%;
+
+  .bike-available {
+    background-color: rgba($grey-background, 0.8);
+    border-radius: 0.4rem;
+    color: $white-font-color;
+    font-size: $small-fontsize;
+    padding: 0.4rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+
+  .mat-icon {
+    height: 1.6rem;
+    width: 1.8rem;
+  }
+
+  .bike-info {
+    padding: 0.8rem;
+
+    &_brand {
+      color: $dark-text-color;
+      font-size: $h5-fontsize;
+    }
+
+    &_name {
+      color: $dark-text-color;
+      font-size: $small-fontsize;
+      max-width: 90%;
+    }
+
+    &_price-week {
+      font-size: $small-fontsize;
+    }
+
+    &_size {
+      color: $light-text-color;
+      font-size: $small-fontsize;
+      max-width: 100%;
+    }
+
+    &_rating {
+      color: $light-text-color;
+      font-size: $small-fontsize;
+      width: 8.4rem;
+    }
+
+    &_price {
+      line-height: 2rem;
+      width: 8.4rem;
+    }
+
+    &_content {
+      align-items: self-start;
+      line-height: 2rem;
+      width: 70%;
+    }
+
+    &_price-day {
+      color: $main-blue;
+      font-size: $h5-fontsize;
+      white-space: nowrap;
+    }
+
+    &_price-week {
+      white-space: nowrap;
+    }
+
+    &_price-xs,
+    .bike-card-info-mobile {
+      display: none;
+    }
+
+    &_size,
+    &_rating {
+      margin-top: 0.4rem;
+    }
+  }
+}
+
+@media (min-width: $device-sm) {
+  .bike-tile {
+    &_wrap-img {
+      border-bottom: 0.1rem solid $light-grey;
+      position: relative;
+      width: 100%;
+
+      &::before {
+        content: '';
+        display: block;
+        float: left;
+        padding-top: 67.667%;
+      }
+
+      img {
+        border-top-left-radius: 0.4rem;
+        border-top-right-radius: 0.4rem;
+        height: 100%;
+        left: 0;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
+// TODO: @MARIA move to bike-card-mobile component
+// TODO: @MARIA use mixin for breakpoints
+@media (max-width: $device-sm) {
+  .bike-tile_mobile-view {
+    .bike-tile {
+      flex-direction: row;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+      max-height: 10rem;
+      width: 100%;
+
+      .bike-available {
+        font-size: 1.2rem;
+        left: 0.2rem;
+        right: initial;
+        top: 0.2rem;
+      }
+
+      .bike-card-info-mobile {
+        display: contents;
+      }
+
+      .bike-info {
+        padding: 0.6rem;
+        flex: 1;
+
+        &_content {
+          width: 100%;
+        }
+
+        &_brand {
+          font-size: $h6-fontsize;
+          width: 100%;
+        }
+
+        &_rating,
+        &_size {
+          margin-top: 0;
+        }
+
+        &_price-xs {
+          display: flex;
+          flex-direction: column;
+          float: right;
+          margin: 0;
+        }
+
+        &_price-day {
+          font-size: $h6-fontsize;
+          padding-bottom: 0;
+        }
+
+        &_price,
+        .bike-tile_desktop {
+          display: none;
+        }
+
+        &_name,
+        &_price-week,
+        &_size,
+        &_rating {
+          font-size: $small-fontsize - 0.2rem;
+        }
+      }
+
+      .wrap-size-rating {
+        max-width: 60%;
+      }
+
+      .bike-tile {
+        &_wrap-img {
+          border-right: 1px solid $light-grey;
+          flex: 0 0 45%;
+          width: 45%;
+          max-width: 19rem;
+
+          img {
+            border-bottom-left-radius: 0.4rem;
+            border-top-left-radius: 0.4rem;
+            border-top-right-radius: 0;
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+// @Maria let's test this, do we really need to have styles only for 100px ?
+// @media (min-width: $device-tablet) and (max-width: $device-lg) {
+//   .bike-tile {
+
+//     .bike-info {
+//       &_brand,
+//       &_price-day {
+//         font-size: $h5-fontsize;
+//       }
+
+//       &_price-day {
+//         font-size: $h5-fontsize;
+//       }
+
+//       &_name,
+//       &_price-week,
+//       &_size,
+//       &_rating {
+//         font-size: $small-fontsize - 0.2rem;
+//       }
+//     }
+//   }
+// }
+
+//Styles for bike tiles on map
+
+@media (min-width: $device-lg) {
+  .bike-tile_map-view.bike-tile {
+    width: 20rem;
+
+    .bike-tile_wrap-img {
+      width: 100%;
+
+      &::before {
+        padding-top: 57.667%;
+      }
+    }
+
+    .bike-info {
+      padding: 0.4rem;
+    }
+  }
+}
+
+@media (min-width: $device-xl) {
+  .bike-info {
+    &_brand,
+    &_price-day {
+      font-size: $h4-fontsize;
+    }
+
+    &_price-day {
+      font-size: $h4-fontsize;
+    }
+  }
+}
+
+@media (max-width: $device-sm) {
+  .bike-tile_wrap-img {
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+// TODO: @MARIA please check what is this
+// a {
+//   height: 100%;
+//   width: 100%;
+// }

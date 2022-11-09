@@ -1,0 +1,150 @@
+<div class="wrap-top-menu">
+  <div class="wrap-top-menu_mobile">
+    <mat-sidenav-container class="wrap-sidenav">
+      <mat-sidenav
+        position="end"
+        #sidenav
+        (keydown.escape)="close('escape')"
+        disableClose
+        [fixedInViewport]="mobileQuery.matches"
+        fixedTopGap="0"
+      >
+        <mat-icon class="white float-left" (click)="close('toggle button')">
+          close
+        </mat-icon>
+        <mat-nav-list *ngIf="!isLoggedIn">
+          <a mat-list-item (click)="signUp()">{{
+            'forms.sign-up' | translate
+          }}</a>
+          <a mat-list-item (click)="login()">{{
+            'forms.log_in' | translate
+          }}</a>
+          <a (click)="sidenav.toggle()" mat-list-item routerLink="/list-bike">{{
+            'shared.list-a-bike' | translate
+          }}</a>
+          <a (click)="sidenav.toggle()" mat-list-item routerLink=".">{{
+            'shared.how-it-works' | translate
+          }}</a>
+          <a (click)="sidenav.toggle()" mat-list-item routerLink=".">{{
+            'shared.trust-and-safety' | translate
+          }}</a>
+        </mat-nav-list>
+        <mat-nav-list *ngIf="isLoggedIn" class="t-align-center m-t-2">
+          <img
+            class="sidenav-user-avatar p-2"
+            [src]="
+              (user$ | async)?.profilePicture?.profilePicture?.url
+                | profilePicturePipe
+            "
+            alt="user-avatar"
+          />
+
+          <a (click)="sidenav.toggle()" mat-list-item routerLink="/my-bikes">{{
+            'listings.my-bikes' | translate
+          }}</a>
+          <a (click)="sidenav.toggle()" mat-list-item routerLink="/list-bike">{{
+            'shared.list-a-bike' | translate
+          }}</a>
+          <a (click)="sidenav.toggle()" mat-list-item routerLink="/settings">{{
+            'settings.settings' | translate
+          }}</a>
+          <a (click)="sidenav.toggle()" mat-list-item routerLink=".">{{
+            'settings.invite' | translate
+          }}</a>
+          <a (click)="sidenav.toggle()" mat-list-item routerLink="/invoices">{{
+            'invoices.billing' | translate
+          }}</a>
+          <a mat-list-item (click)="logOut()">{{
+            'forms.log-out' | translate
+          }}</a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content class="content">
+        <mat-icon (click)="sidenav.toggle()" class="white">
+          menu
+        </mat-icon>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+  <nav class="flex align-items-center direction-row wrap-top-menu_desktop">
+    <ul class="flex direction-row content-end align-items-center header-list">
+      <li class="header-list-item">
+        <button
+          mat-button
+          [matMenuTriggerFor]="subMenu"
+          class="d-none d-md-block"
+        >
+          {{ 'shared.learn-more' | translate }}
+          <mat-icon class="white">
+            arrow_drop_down
+          </mat-icon>
+        </button>
+        <mat-menu #subMenu="matMenu">
+          <button mat-menu-item>{{ 'shared.how-it-works' | translate }}</button>
+          <button mat-menu-item>{{ 'shared.list-a-bike' | translate }}</button>
+          <button mat-menu-item>
+            {{ 'shared.renting-a-bike' | translate }}
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item>
+            {{ 'shared.trust-and-safety' | translate }}
+          </button>
+          <button mat-menu-item>{{ 'shared.contact' | translate }}</button>
+        </mat-menu>
+      </li>
+
+      <li *ngIf="!isLoggedIn" class="header-list-item lnr-d-flex">
+        <button mat-button color="white" routerLink="/list-bike">
+          {{ 'shared.list-a-bike' | translate }}
+        </button>
+        <button mat-button color="white" (click)="signUp()">
+          {{ 'forms.sign-up' | translate }}
+        </button>
+        <button mat-button color="white" (click)="login()">
+          {{ 'forms.log_in' | translate }}
+        </button>
+      </li>
+      <li *ngIf="isLoggedIn" class="header-list-item">
+        <a href="">{{ 'shared.request' | translate }}</a>
+      </li>
+      <li *ngIf="isLoggedIn" class="header-list-item">
+        <a href="/list-bike">
+          {{ 'shared.list-a-bike' | translate }}
+        </a>
+      </li>
+      <li *ngIf="isLoggedIn" class="header-list-item">
+        <button mat-button [matMenuTriggerFor]="userMenu" class="user-avatar">
+          <img
+            [src]="
+              (user$ | async)?.profilePicture?.profilePicture?.url
+                | profilePicturePipe
+            "
+            alt="user-avatar"
+          />
+        </button>
+
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item [routerLink]="'/users/' + (user$ | async)?.id">
+            {{ 'settings.profile' | translate }}
+          </button>
+          <button mat-menu-item>{{ 'shared.request' | translate }}</button>
+          <button mat-menu-item routerLink="/my-bikes">
+            {{ 'listings.my-bikes' | translate }}
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item routerLink="/settings">
+            {{ 'settings.settings' | translate }}
+          </button>
+          <button mat-menu-item>{{ 'settings.invite' | translate }}</button>
+          <button mat-menu-item routerLink="/invoices">
+            {{ 'invoices.billing' | translate }}
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item (click)="logOut()">
+            {{ 'forms.log-out' | translate }}
+          </button>
+        </mat-menu>
+      </li>
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,17 @@
+<div class="wrap-page">
+  <div class="header">
+    <lnr-layout-header></lnr-layout-header>
+  </div>
+  <div class="main">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="footer">
+    <lnr-layout-footer></lnr-layout-footer>
+  </div>
+</div>
+<div
+  *ngIf="loading"
+  class="loader flex justify-content-center align-items-center"
+>
+  Loading...
+</div>

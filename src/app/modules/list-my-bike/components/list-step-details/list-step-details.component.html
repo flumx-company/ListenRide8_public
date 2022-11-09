@@ -1,0 +1,178 @@
+<form class="details" [formGroup]="detailsFormGroup" *ngIf="detailsFormGroup">
+  <h3>What is the brand, model, and size of your bike?</h3>
+  <div id="details_brand_container">
+    <div>
+      <mat-form-field class="brand col-12">
+        <mat-label class="brand">Brand</mat-label>
+        <input
+          matInput
+          formControlName="brand"
+          (input)="maxValue($event, 'brand')"
+          class="brand"
+          required="required"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="model col-12">
+        <mat-label for="model" class="model">Model</mat-label>
+        <input
+          matInput
+          id="model"
+          formControlName="name"
+          (input)="maxValue($event, 'name')"
+          class="model"
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="description col-12">
+        <mat-label class="description"
+          >Description(min. 100 characters)</mat-label
+        >
+        <textarea
+          #description
+          maxlength="800"
+          matInput
+          formControlName="description"
+          class="description"
+        ></textarea>
+        <mat-hint align="end">{{ description.value.length }}/800</mat-hint>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <h3>How many variants would you like to add?</h3>
+
+  <div
+    id="details_container"
+    *ngFor="let val of bikeQuantity; let index = index"
+  >
+    <mat-form-field class="quantity">
+      <div class="col-12">
+        <mat-label class="quantity">Quantity</mat-label>
+        <input matInput class="quantity" [value]="'' + (index + 1)" disabled />
+      </div>
+    </mat-form-field>
+
+    <mat-form-field id="rider-height">
+      <div class="col-12">
+        <mat-label>Rider height*</mat-label>
+        <mat-select
+          [formControlName]="'size'"
+          [disabled]="val.available"
+          *ngIf="!index"
+        >
+          <mat-option *ngFor="let size of sizeList" [value]="size.value">
+            {{ size.text }}
+          </mat-option>
+        </mat-select>
+        <mat-select
+          [(value)]="val.size"
+          [disabled]="val.available"
+          *ngIf="index"
+        >
+          <mat-option
+            *ngFor="let size of sizeList"
+            [value]="'Unisize' === size.text ? 'Unisize' : size.value"
+          >
+            {{ size.text }}
+          </mat-option>
+        </mat-select>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field>
+      <div class="col-12">
+        <mat-label>Frame size</mat-label>
+        <input
+          matInput
+          maxlength="10"
+          [disabled]="val.available"
+          *ngIf="!index"
+        />
+        <input
+          matInput
+          maxlength="10"
+          *ngIf="index"
+          [disabled]="val.available"
+          [value]="val && val.frame_size"
+          (input)="changeData($event, val, 'frame_size')"
+        />
+      </div>
+    </mat-form-field>
+    <mat-form-field>
+      <div class="col-12">
+        <mat-label>Bicycle number</mat-label>
+        <input
+          matInput
+          maxlength="10"
+          type="search"
+          [disabled]="val.available"
+          *ngIf="!index"
+        />
+        <input
+          matInput
+          maxlength="10"
+          type="search"
+          [disabled]="val.available"
+          *ngIf="index"
+          (input)="changeData($event, val, 'bicycle_number')"
+          [value]="val && val.bicycle_number"
+        />
+      </div>
+    </mat-form-field>
+    <mat-form-field>
+      <div class="col-12">
+        <mat-label>Frame number</mat-label>
+
+        <div class="frame-number">
+          <input
+            matInput
+            maxlength="10"
+            type="search"
+            [disabled]="val.available"
+            *ngIf="!index"
+          />
+          <input
+            matInput
+            type="search"
+            maxlength="10"
+            [disabled]="val.available"
+            [value]="val && val.frame_number"
+            *ngIf="index"
+            (input)="changeData($event, val, 'frame_number')"
+          />
+          <mat-icon
+            id="hideFrameNumber"
+            (click)="val.available = !val.available"
+          >
+            {{ val.available ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+          <mat-icon id="delQuantity" *ngIf="index" (click)="delQuantity(index)">
+            {{ 'delete' }}
+          </mat-icon>
+        </div>
+      </div>
+    </mat-form-field>
+  </div>
+
+  <div class="addVariants">
+    <a (click)="addVariants()">Add variants</a>
+  </div>
+  <div class="button-container">
+    <button class="mat-button-stepper" mat-button matStepperPrevious>
+      Back
+    </button>
+    <button
+      class="mat-button-stepper next"
+      [ngClass]="{ active: !detailsFormGroup?.invalid && !isRider() }"
+      [disabled]="detailsFormGroup?.invalid || isRider()"
+      mat-button
+      matStepperNext
+      type="button"
+    >
+      Next
+    </button>
+  </div>
+</form>

@@ -1,0 +1,51 @@
+.lnr {
+  button {
+    cursor: pointer;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    outline: none;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.lnr-btn-edit {
+      mat-icon {
+        font-size: 17px;
+        line-height: 22px;
+      }
+    }
+
+    &.lnr-btn-back {
+      color: #555;
+      font-weight: bold;
+
+      mat-icon {
+        font-size: 23px;
+        line-height: 15px;
+        margin-top: -3px;
+      }
+    }
+  }
+
+  .lnr-btn-link {
+    background: transparent;
+    border: none;
+    // TODO: add var
+    color: green;
+    font-size: 14px;
+    font-weight: 500;
+    height: 18px;
+    padding: 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+  }
+
+  .lnr-fb-button,
+  .lnr-fb-button.mat-primary {
+    background-color: #3b5998;
+  }
+}

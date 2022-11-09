@@ -1,0 +1,90 @@
+@import 'variables';
+@import 'utils/utils';
+
+.welcome-screen {
+  align-items: center;
+  display: flex;
+  position: relative;
+
+  &_image {
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: $border-radius;
+    display: flex;
+    height: 46rem;
+    justify-content: center;
+    width: 60%;
+    z-index: 0;
+
+    @include if-smaller-than(sm) {
+      height: 22rem;
+      width: 100%;
+    }
+  }
+
+  &_content {
+    position: absolute;
+    right: 4rem;
+    text-align: left;
+    width: 40%;
+    z-index: 1;
+
+    &_block {
+      background: $white;
+      border-radius: $border-radius;
+      box-shadow: 0 0.4rem 3rem rgba(65, 83, 105, 0.16);
+      height: auto;
+      padding: 4rem 2rem;
+    }
+
+    &_date {
+      padding-bottom: 2rem;
+      padding-left: 6rem;
+
+      &_desktop {
+        display: block;
+      }
+
+      &_mobile {
+        display: none;
+      }
+    }
+  }
+}
+
+@include if-smaller-than(xl) {
+  .welcome-screen {
+    flex-direction: column;
+
+    &_image {
+      width: 100%;
+      height: 42rem;
+    }
+
+    &_content {
+      position: relative;
+      right: 0;
+      width: 100%;
+
+      &_block {
+        box-shadow: none;
+        padding: 1rem 0 0;
+      }
+
+      &_date {
+        padding-bottom: 1rem;
+        padding-left: 0;
+
+        &_mobile {
+          display: block;
+        }
+
+        &_desktop {
+          display: none;
+        }
+      }
+    }
+  }
+}

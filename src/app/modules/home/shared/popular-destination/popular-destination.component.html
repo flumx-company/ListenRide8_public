@@ -1,0 +1,38 @@
+<div class="">
+  <div class="col-md-10 col-sm-12 m-b-1">
+    <h3 class="subtitles dark-font-color" *ngIf="cities">
+      {{ 'home.popular_destination.header' | translate }}
+      <span *ngIf="this.apiSeoService.getCountryDomain() === 'com'">
+        {{ 'home.popular_destination.header_helper' | translate }} :
+      </span>
+      <span *ngIf="this.apiSeoService.getCountryDomain() !== 'com'">
+        {{
+          (cities[0]?.seo_country?.name)[this.apiSeoService.retrieveLocale()]
+        }}
+        :
+      </span>
+    </h3>
+  </div>
+</div>
+<div class="flex flex-wrap popular-destination-list">
+  <div
+    *ngFor="let city of cities"
+    class="wrap-destination col-lg-2 col-md-4 col-sm-6"
+  >
+    <div class="flex direction-column">
+      <a
+        routerLink="./{{
+          city.name[this.apiSeoService.retrieveLocale()] | lowercase
+        }}"
+      >
+        <h5 class="main-blue-font-color thin text-decoration-none">
+          {{ city.name[this.apiSeoService.retrieveLocale()] }}
+        </h5>
+      </a>
+      <span>
+        €{{ city?.average_price | number: '1.0-0' }} /
+        {{ 'shared.day_average' | translate }}
+      </span>
+    </div>
+  </div>
+</div>

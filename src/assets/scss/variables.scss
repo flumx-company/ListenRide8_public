@@ -1,0 +1,21 @@
+@import 'colors';
+
+$border-radius: 0.4rem;
+$base-font_size: 1.6rem;
+
+// Font sizes
+$h1-fontsize: 6rem;
+$h2-fontsize: 5rem;
+$h3-fontsize: 3rem;
+$h4-fontsize: 2rem;
+$h5-fontsize: 1.8rem;
+$h6-fontsize: $base-font_size;
+$small-fontsize: 1.4rem;
+
+// Breakpoints
+$device-xs: 540px;
+$device-sm: 768px;
+$device-md: 992px;
+$device-tablet: 1100px;
+$device-lg: 1200px;
+$device-xl: 1600px;

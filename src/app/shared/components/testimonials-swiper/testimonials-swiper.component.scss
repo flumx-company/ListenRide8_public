@@ -1,0 +1,100 @@
+@import 'variables';
+@import 'utils/utils';
+
+:host .swiper-container {
+  height: 42rem;
+}
+
+.testimonials-list {
+  position: relative;
+
+  &_large-img {
+    border-radius: $border-radius;
+    height: 42rem;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 72rem;
+  }
+
+  &_content {
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: 0 0.4rem 3rem rgba(65, 83, 105, 0.16);
+    height: auto;
+    padding: 4rem 5rem 8rem 2rem;
+    position: absolute;
+    right: 1rem;
+    text-align: left;
+    width: 46rem;
+  }
+
+  &_small-img {
+    display: none;
+  }
+
+  &_username {
+    bottom: 0;
+    position: absolute;
+  }
+}
+
+@include if-smaller-than(xl) {
+  :host .swiper-container {
+    height: auto;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
+
+  .testimonials-list_content {
+    right: 0;
+  }
+
+  .testimonials-list {
+    &_content {
+      height: auto;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      position: relative;
+      width: 100%;
+
+      h3 {
+        font-size: $h4-fontsize;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+    }
+
+    &_username {
+      position: relative;
+    }
+
+    &_username {
+      margin-top: 1rem;
+    }
+
+    &_small-img {
+      border-radius: $border-radius;
+      display: block;
+      height: inherit;
+      max-height: 20rem;
+      object-fit: contain;
+      position: relative;
+      width: 100%;
+    }
+  }
+}
+
+.swiper-pagination {
+  bottom: 1rem;
+  right: 1rem;
+}
+
+::ng-deep.swiper-pagination-bullet {
+  background: $main-blue;
+  border-radius: 30%;
+  height: 1.2rem;
+  margin: 0.4rem;
+  width: 1.2rem;
+}

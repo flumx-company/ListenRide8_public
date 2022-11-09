@@ -1,0 +1,61 @@
+<div class="step-content">
+  <div class="step-content-header">
+    <h3 class="step-title" [innerHTML]="'verification.6.title' | translate">
+      <sup>
+        <lnr-view-template-status
+          [value]="'private'"
+        ></lnr-view-template-status>
+      </sup>
+    </h3>
+
+    <p [innerHTML]="'booking.details.subtitle' | translate"></p>
+  </div>
+
+  <mat-error class="lnr-text-align-l">
+    <lnr-http-error-message [error]="addressError"></lnr-http-error-message>
+  </mat-error>
+
+  <lnr-address
+    (addressReady)="onAddressReady($event)"
+    (addressInvalid)="onAddressInvalid($event)"
+  ></lnr-address>
+</div>
+
+<div class="step-actions lnr-d-flex lnr-space-btw">
+  <div class="left-side" *ngIf="isDesktop || isTablet">
+    <button
+      mat-button
+      matStepperPrevious
+      class="lnr-btn-back"
+      [hidden]="isItFirstStep"
+    >
+      <mat-icon svgIcon="arrow-left"></mat-icon>
+      {{ 'list.back' | translate }}
+    </button>
+  </div>
+
+  <div class="right-side">
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="nextOrCloseIfLastStep()"
+    >
+      {{ (stepCompleted ? 'shared.next' : 'shared.skip') | translate }}
+    </button>
+
+    <button
+      mat-raised-button
+      color="primary"
+      class="lnt-btn-min-width lnr-mrg-l-16"
+      [hidden]="addressSaved"
+      [disabled]="!address"
+      (click)="submit()"
+    >
+      Save &
+      {{ (isItLastStep ? 'shared.complete' : 'shared.proceed') | translate }}
+      <lnr-loader-spinner-small
+        [hidden]="!addressPending"
+      ></lnr-loader-spinner-small>
+    </button>
+  </div>
+</div>

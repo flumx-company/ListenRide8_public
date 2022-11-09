@@ -1,0 +1,24 @@
+h4 {
+  margin-bottom: 16px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  mat-icon {
+    margin-right: 10px;
+  }
+}
+
+mat-icon {
+  color: #ccc;
+
+  &.active {
+    color: #5fc693;
+  }
+}

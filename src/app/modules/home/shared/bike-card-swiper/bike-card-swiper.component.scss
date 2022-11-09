@@ -1,0 +1,11 @@
+@import 'variables';
+
+@media (max-width: $device-md) {
+  .swiper-container {
+    ::ng-deep .bike-tile_wrap-img img {
+      height: 16rem;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+}

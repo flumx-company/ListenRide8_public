@@ -1,0 +1,21 @@
+@import 'variables';
+@import 'utils/utils';
+
+.small-swiper {
+  &_list {
+    img {
+      border-radius: $border-radius;
+      height: 21rem;
+      object-fit: cover;
+      width: 100%;
+      @include if-smaller-than(md) {
+        height: 11rem;
+        width: 100%;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}

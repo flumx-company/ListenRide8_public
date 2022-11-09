@@ -1,0 +1,37 @@
+@import '../../assets/scss/variables';
+
+ngx-intl-tel-input {
+  height: 38px;
+
+  .intl-tel-input {
+    height: inherit;
+    width: inherit;
+
+    &.separate-dial-code {
+      .selected-flag {
+        background: transparent;
+      }
+    }
+
+    input {
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+      height: inherit;
+      outline: none;
+      width: inherit;
+
+      &:focus {
+        border: 2px solid $main-blue;
+      }
+    }
+
+    .dropdown-menu {
+      .search-container {
+        input {
+          height: 30px;
+        }
+      }
+    }
+
+  }
+}

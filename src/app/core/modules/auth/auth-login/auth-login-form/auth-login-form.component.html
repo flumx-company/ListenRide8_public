@@ -1,0 +1,117 @@
+<div class="row" lnrFocusFirstInvalidField>
+  <div [class.col-md-12]="!isRequestFlow" [class.col-md-6]="isRequestFlow">
+    <button
+      mat-raised-button
+      type="button"
+      class="lnr-w-100 lnr-mrg-btm lnr-fb-button"
+      color="primary"
+      (click)="loginFB()"
+      [innerHTML]="'booking.sign_in.login_facebook' | translate"
+    >
+      <lnr-loader-spinner-small
+        [hidden]="!socialUserPending && !loginFacebookPending"
+      ></lnr-loader-spinner-small>
+    </button>
+  </div>
+
+  <div class="col-sm-6 flex justify-content-center" *ngIf="isRequestFlow">
+    <a
+      (click)="notMemberYet()"
+      [innerHTML]="'booking.sign_in.not_member' | translate"
+    ></a>
+  </div>
+
+  <div class="col-sm-12">
+    <lnr-divider class="lnr-mrg-btm" text="or"></lnr-divider>
+  </div>
+
+  <div [class.col-md-12]="!isRequestFlow" [class.col-md-6]="isRequestFlow">
+    <mat-form-field appearance="outline" class="lnr-w-100">
+      <mat-label>Email</mat-label>
+      <input
+        [formControl]="form.get('email')"
+        type="email"
+        matInput
+        placeholder="Enter your email"
+        lnrAutofocus
+      />
+      <mat-error *ngIf="form.get('email').touched && form.get('email').errors">
+        <span
+          *ngIf="form.get('email').errors?.required"
+          [innerHTML]="'shared.errors.email_required' | translate"
+        ></span>
+        <span
+          *ngIf="
+            !form.get('email').errors?.required &&
+            form.get('email').errors?.wrongMail
+          "
+          [innerHTML]="'forms.errors.email_wrong' | translate"
+        ></span>
+        <span
+          *ngIf="
+            !form.get('email').errors?.required &&
+            form.get('email').errors?.noAt
+          "
+          [innerHTML]="'forms.errors.email_containment' | translate"
+        ></span>
+        <span
+          *ngIf="
+            !form.get('email').errors?.required &&
+            form.get('email').errors?.noName
+          "
+          [innerHTML]="'forms.errors.email_wrong_format' | translate"
+        ></span>
+        <span
+          *ngIf="
+            !form.get('email').errors?.required &&
+            form.get('email').errors?.wrongDomain
+          "
+          [innerHTML]="'forms.errors.email_wrong_domain' | translate"
+        ></span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div [class.col-md-12]="!isRequestFlow" [class.col-md-6]="isRequestFlow">
+    <!--    //col-md-6-->
+    <mat-form-field appearance="outline" class="lnr-w-100">
+      <mat-label>Password</mat-label>
+      <input
+        [formControl]="form.get('password')"
+        type="password"
+        matInput
+        placeholder="Password"
+      />
+      <mat-error
+        *ngIf="form.get('password').touched && form.get('password').errors"
+      >
+        <span
+          *ngIf="form.get('password').errors.required"
+          [innerHTML]="'forms.errors.password_missing_xs' | translate"
+        ></span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="col-sm-12 not-a-member">
+    <div class="lnr-d-flex lnr-space-btw">
+      <a
+        (click)="forgotPassword()"
+        [class.disabled]="form.get('email').invalid"
+        [matTooltip]="forgotPasswordTooltip"
+        [innerHTML]="'forms.forgot_password' | translate"
+      >
+        <lnr-loader-spinner-small
+          [hidden]="!forgotPasswordPending"
+          [color]="'#5FC693'"
+        ></lnr-loader-spinner-small>
+      </a>
+
+      <a
+        *ngIf="!isRequestFlow"
+        (click)="notMemberYet()"
+        [innerHTML]="'booking.sign_in.not_member' | translate"
+      ></a>
+    </div>
+  </div>
+</div>

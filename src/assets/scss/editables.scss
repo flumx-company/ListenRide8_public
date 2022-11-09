@@ -1,0 +1,13 @@
+@import 'colors';
+
+.editable {
+  ::ng-deep {
+    a {
+      color: $link-color;
+
+      &:hover {
+        color: $main-green;
+      }
+    }
+  }
+}

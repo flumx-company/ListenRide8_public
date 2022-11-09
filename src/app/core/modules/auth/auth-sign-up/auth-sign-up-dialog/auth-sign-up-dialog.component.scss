@@ -1,0 +1,60 @@
+@import 'variables';
+
+::ng-deep .tabs {
+  background: $white;
+  text-align: center;
+
+  .buttons-wrap {
+    display: inline-block;
+    position: relative;
+
+    &::after {
+      background: $main-blue;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: 0.3rem;
+      left: 0;
+      position: absolute;
+      transition: left 0.1s;
+      width: 50%;
+    }
+
+    &.private {
+      &::after {
+        left: 0;
+      }
+    }
+
+    &.business {
+      &::after {
+        left: 50%;
+      }
+    }
+  }
+
+  button {
+    border-radius: 0;
+    box-sizing: content-box;
+    height: 4rem;
+    position: relative;
+
+    &.active {
+      color: $main-blue;
+
+      &::after {
+
+      }
+    }
+  }
+}
+
+:host ::ng-deep .mat-checkbox-layout .mat-checkbox-label {
+  line-height: 2rem;
+}
+
+.wrap-password-field {
+  ::ng-deep .mat-form-field-flex > .mat-form-field-infix {
+    padding: 0.3rem 0 0.2rem !important;
+  }
+}

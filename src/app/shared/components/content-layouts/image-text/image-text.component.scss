@@ -1,0 +1,43 @@
+@import 'utils/utils';
+@import 'variables';
+
+.image-text {
+  &_image {
+    border-radius: $border-radius;
+    height: 37rem;
+    object-fit: cover;
+    object-position: center;
+    position: relative;
+    width: 100%;
+    @include if-smaller-than(xl) {
+      height: auto;
+    }
+  }
+
+  &_content {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    @include if-smaller-than(sm) {
+      flex-direction: column;
+    }
+  }
+
+  .right {
+    flex-direction: row-reverse;
+  }
+
+  .top {
+    flex-direction: column;
+  }
+
+  .bottom {
+    flex-direction: column-reverse;
+  }
+
+  .right, .top, .bottom {
+    @include if-smaller-than(sm) {
+      flex-direction: column;
+    }
+  }
+}

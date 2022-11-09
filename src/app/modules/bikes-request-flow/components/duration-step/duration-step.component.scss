@@ -1,0 +1,142 @@
+@import "../../../../../assets/scss/variables";
+@import "utils/utils";
+
+.main_container {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  border-bottom: .1rem solid $input-border;
+
+  @include if-bigger-than(md) {
+    height: 30rem;
+
+  }
+
+  h3 {
+    font-size: $h3-fontsize;
+    font-weight: normal;
+    margin-bottom: 1.4rem;
+    color: $social-media-bg-hover;
+  }
+
+  .leftContainer {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    margin-top: 2rem;
+
+    @include if-smaller-than(md) {
+      grid-template-columns: 100%;
+      margin-bottom: 2rem;
+    }
+
+    img {
+      width: 26rem;
+      height: 17.4rem;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 30% 70%;
+      font-size: $h5-fontsize;
+      margin-top: 1rem;
+    }
+  }
+}
+
+.insurance_container {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 60% 40%;
+
+  @include if-smaller-than(md) {
+    grid-template-columns: 100%;
+  }
+
+
+  h4 {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+  }
+
+  .premium_insurance {
+    border-right: .1rem solid $input-border;
+
+    @include if-smaller-than(md) {
+      border-right: none;
+      border-bottom: .1rem solid $input-border;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    div {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      width: 100%;
+
+      div {
+        display: grid;
+        grid-template-columns: 10% 90%;
+      }
+
+      mat-icon {
+        color: $main-blue;
+      }
+    }
+
+    button {
+      color: $white;
+      width: 20.7rem;
+      height: 4.2rem;
+      background: $main-green;
+      font-weight: bold;
+      font-size: $base-font_size;
+      line-height: 100%;
+      border: none;
+      border-radius: .4rem;
+      margin: 1.7rem 1rem 1rem 4rem;
+
+    }
+  }
+
+  .voucher {
+    padding-left: 2rem;
+
+    h4, h5, p {
+      margin-bottom: 2rem;
+    }
+
+    .input_voucher {
+      margin-bottom: 3rem;
+      display: grid;
+      grid-template-columns: 60% 30%;
+      input {
+        width: 16.7rem;
+        height: 4.2rem;
+        border: 0.15rem solid $input-border;
+        border-radius: .5rem;
+        padding-left: 2rem;
+
+        @include if-smaller-than(xl) {
+          padding-left: .5rem;
+        }
+      }
+      input::-webkit-input-placeholder {font-size: $small-fontsize}
+      input::-moz-placeholder          {font-size: $small-fontsize}
+      input:-moz-placeholder           {font-size: $small-fontsize}
+      input:-ms-input-placeholder      {font-size: $small-fontsize}
+
+      button {
+        border: none;
+        border-radius: .4rem;
+        height: 4.2rem;
+        width: 9.5rem;
+        background: $main-green;
+        font-weight: bold;
+        color: $white;
+        margin-left: 1rem;
+      }
+    }
+  }
+}
+

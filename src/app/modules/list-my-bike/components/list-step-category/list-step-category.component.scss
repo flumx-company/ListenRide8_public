@@ -1,0 +1,79 @@
+@import "variables";
+@import "utils/utils";
+
+:host::ng-deep .category {
+  .selected-category {
+    background-size: 2.7rem !important;
+
+    .mat-select-trigger .mat-select-value {
+      padding-left: 3rem;
+    }
+  }
+
+  mat-form-field {
+    width: 26.3rem;
+
+    @include if-smaller-than(md) {
+      width: 100%;
+    }
+
+    img {
+      margin-right: 1rem;
+    }
+  }
+
+  mat-icon {
+    margin-right: 1rem;
+  }
+
+  .select-category-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 35rem;
+    @include if-smaller-than(md) {
+      width: 100%;
+
+    }
+
+    .select-category-accessories {
+      width: 30%;
+      color: $light-text-color;
+      margin: 0 .8rem 1rem 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      border-radius: .5rem;
+
+      @include if-smaller-than(md) {
+        width: 45%;
+      }
+
+      &.activeSelect {
+        color: $white;
+        background: $main-blue;
+
+        ::ng-deep svg {
+          fill: $white !important;
+
+          .mat-icon {
+            height: 2.4rem !important;
+            width: 2.4rem !important;
+          }
+
+          g {
+            fill: $white !important;
+          }
+
+          path {
+            fill: $white !important;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+

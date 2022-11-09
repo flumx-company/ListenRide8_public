@@ -1,0 +1,116 @@
+@import 'variables';
+@import 'colors';
+
+html {
+  font-size: 62.5%; /* default 10px = 1rem! */
+}
+
+body {
+  font-size: $base-font_size;
+}
+
+a {
+  color: $link-color;
+  font-weight: 500;
+
+  :hover {
+    color: $main-green;
+  }
+}
+
+h1,
+.heading-1 {
+  font-size: $h1-fontsize;
+}
+
+h2,
+.heading-2 {
+  font-size: $h2-fontsize;
+}
+
+h3,
+.heading-3 {
+  font-size: $h3-fontsize;
+}
+
+h4,
+.heading-4 {
+  font-size: $h4-fontsize;
+}
+
+h5,
+.heading-5 {
+  font-size: $h5-fontsize;
+}
+
+h6,
+.heading-6 {
+  font-size: $h6-fontsize;
+}
+
+.small {
+  font-size: $small-fontsize;
+}
+
+.thin {
+  font-weight: 100;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.t-align-center {
+  text-align: center;
+}
+
+.text-ellipsis {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hyphens-auto {
+  hyphens: auto;
+}
+
+.white {
+  color: $white-font-color;
+}
+
+.light-font {
+  color: $light-grey-font;
+}
+
+.dark-font-color {
+  color: $dark-text-color;
+}
+
+.main-blue-font-color {
+  color: $main-blue;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.first-word-capital {
+  text-transform: lowercase;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

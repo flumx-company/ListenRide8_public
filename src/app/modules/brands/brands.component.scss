@@ -1,0 +1,18 @@
+@import 'utils/utils';
+
+:host mat-grid-list mat-grid-tile {
+  @include transition(all);
+  background-position: 50%;
+  background-size: cover;
+  opacity: 1;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+
+  a {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+}

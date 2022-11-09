@@ -1,0 +1,73 @@
+@import '../../../../assets/scss/variables';
+
+:host {
+  @media (max-width: $device-xs) {
+    flex: 1;
+    margin: auto 1rem;
+  }
+}
+
+::ng-deep .mat-menu-panel {
+  width: 320px;
+}
+
+.btn-category-filter {
+  border: 0.1rem solid $input-border;
+  border-radius: 0.4rem;
+  color: $light-text-color;
+  font-weight: 400;
+  min-width: 12.5rem;
+  text-align: left;
+  width: 100%;
+
+  @media (max-width: $device-xs) {
+    margin-left: 0.1rem;
+    text-align: left;
+    width: 100%;
+  }
+}
+
+.category {
+  background: $white;
+  border-bottom: 0.1rem solid $light-grey;
+  display: flex;
+  flex: 0 0 100%;
+  flex-direction: column;
+  max-width: 100%;
+  padding: 1.6rem;
+
+  .category-label {
+    color: $light-grey-font;
+    display: flex;
+    flex: 1 0 100%;
+    flex-direction: row;
+    justify-content: space-between;
+
+    mat-icon {
+      align-self: flex-end;
+    }
+  }
+}
+
+.sub-category {
+  background: $white;
+  display: none;
+
+  &.active {
+    color: $light-grey-font;
+    display: flex;
+    flex: 1 0 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .option {
+    flex: 0 0 100%;
+  }
+
+}
+
+.label-icon {
+  margin-left: -0.4rem;
+  margin-right: 0.2rem;
+}

@@ -1,0 +1,77 @@
+@import 'variables';
+
+.wrap-form {
+  background: $white-font-color;
+  border-radius: 0.6rem;
+  box-shadow: 0.4rem 0.4rem 24rem rgba(65, 83, 105, 0.2);
+  height: auto;
+  left: 1.5rem;
+  padding: 2rem;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+
+  .search-autocomplete {
+    border: 0.1rem solid $input-border;
+    border-radius: $border-radius;
+    min-width: 32rem;
+    padding: 0.8rem;
+    width: auto;
+  }
+
+  .location-icon {
+    color: $black;
+    margin-left: 0.8rem;
+    margin-right: 0.6rem;
+  }
+
+  ::ng-deep.mat-form-field-prefix .mat-icon-button .mat-datepicker-toggle-default-icon {
+    color: $black;
+  }
+}
+
+@media (max-width: $device-sm) {
+  .wrap-form {
+    background: $white-font-color;
+    border-radius: $border-radius;
+    box-shadow: 0.4rem 0.4rem 24rem rgba(65, 83, 105, 0.2);
+    left: 0;
+    position: relative;
+    top: -10rem;
+    width: 100%;
+    z-index: 1;
+
+    .search-autocomplete {
+      min-width: 29rem;
+    }
+  }
+}
+
+@media (min-width: $device-xl) {
+  .wrap-form {
+    max-width: 40rem;
+  }
+}
+
+.calendar-icon {
+  display: flex !important;
+
+  img {
+    margin-right: 0.2rem;
+    padding: 0.2rem;
+    width: 100%;
+  }
+}
+
+.form-icon {
+  margin: 0 1rem 0 0.8rem;
+  width: 2.2rem;
+}
+
+.category-multiselect {
+  margin: -1rem 0 2rem;
+
+  ::ng-deep.btn-category-filter {
+    height: 4.2rem;
+  }
+}

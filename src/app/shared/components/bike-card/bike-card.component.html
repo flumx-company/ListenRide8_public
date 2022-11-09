@@ -1,0 +1,154 @@
+<!-- TODO: remove all OR when all responces camel cased -->
+
+<div
+  [routerLink]="['/bikes/' + bike.id]"
+  [ngClass]="{ 'bike-tile_mobile-view': isMobileView }"
+>
+  <div
+    class="bike-tile text-decoration-none flex direction-column"
+    [ngClass]="{ 'bike-tile_map-view': isMapView }"
+    *ngIf="!isMobileMap; else mobileBikeTemplate"
+  >
+    <div class="bike-tile_wrap-img">
+      <img src="{{ bike?.image_file || bike?.imageFile }}" alt="" />
+    </div>
+    <div class="bike-info">
+      <div
+        *ngIf="bike?.is_cluster || bike?.isCluster"
+        class="bike-available regular"
+      >
+        {{ bike?.rides_count || bike?.ridesCount }}
+        Variants available
+      </div>
+      <div class="flex justify-content-between">
+        <div class="bike-info_content flex direction-column">
+          <span class="bike-info_brand text-ellipsis medium">{{
+            bike?.brand
+          }}</span>
+          <span class="bike-info_name text-ellipsis">{{ bike?.name }}</span>
+        </div>
+        <div class="bike-info_price align-items-end flex direction-column">
+          <span
+            *ngIf="bike?.daily_price === 0"
+            class="bike-info_price-day medium"
+          >
+            Free
+          </span>
+          <div
+            *ngIf="bike?.daily_price > 0"
+            class="flex direction-column align-items-end"
+          >
+            <span class="bike-info_price-day medium">
+              {{ bike?.daily_price || bike?.dailyPrice | number: '1.0-0' }}
+              €/day
+            </span>
+            <span class="bike-info_price-week">
+              {{
+                (bike?.weekly_price || bike?.weeklyPrice) * 7 | number: '1.0-0'
+              }}
+              €/week
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-content-between bike-tile_desktop">
+        <div class="bike-info_content flex direction-column">
+          <div class="bike-info_size flex direction-row align-items-center">
+            <span class="text-ellipsis">
+              Size: {{ bike?.pretty_size || bike?.prettySize }}
+            </span>
+            <div
+              *ngIf="bike?.distance"
+              class="flex direction-row align-items-center"
+            >
+              <mat-icon class="heading-6" aria-hidden="false" aria-label=""
+                >room</mat-icon
+              >
+              <span>{{ bike?.distance }} km</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bike-info_price align-items-end flex direction-column">
+          <div
+            class="bike-info_rating flex direction-row align-items-center content-end"
+            *ngIf="bike?.ratings_total"
+          >
+            <mat-icon class="heading-5" aria-hidden="false" aria-label="">
+              grade
+            </mat-icon>
+            <span>
+              {{
+                bike?.rating_average || bike?.ratingAverage | number: '1.2-2'
+              }}
+              ({{ bike?.ratings_total || bike?.ratingsTotal }})
+            </span>
+          </div>
+        </div>
+      </div>
+      <!--BIKE INFO FOR MOBILE VIEW-->
+      <div *ngIf="isMobileView" class="flex bike-card-info-mobile">
+        <div
+          class="bike-info_content flex direction-row m-t-1 align-items-end justify-content-between"
+        >
+          <div class="flex direction-column wrap-size-rating">
+            <div
+              class="bike-info_rating flex direction-row align-items-center"
+              *ngIf="bike?.ratings_total"
+            >
+              <mat-icon class="heading-6" aria-hidden="false" aria-label="">
+                grade
+              </mat-icon>
+              <span>
+                {{
+                  bike?.rating_average || bike?.ratingAverage | number: '1.2-2'
+                }}
+                ({{ bike?.ratings_total || bike?.ratingsTotal }})
+              </span>
+            </div>
+            <div class="bike-info_size flex direction-row align-items-center">
+              <span class="text-ellipsis">
+                Size: {{ bike?.pretty_size || bike?.prettySize }}
+              </span>
+              <div
+                *ngIf="bike?.distance"
+                class="flex direction-row align-items-center"
+              >
+                <mat-icon class="heading-6" aria-hidden="false" aria-label=""
+                  >room</mat-icon
+                >
+                <span>{{ bike?.distance }} km</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bike-info_price-xs flex direction-column">
+            <span
+              *ngIf="bike?.daily_price === 0"
+              class="bike-info_price-day medium"
+            >
+              Free
+            </span>
+            <div *ngIf="bike?.daily_price > 0" class="flex direction-column">
+              <span class="bike-info_price-day medium">
+                {{ bike?.daily_price || bike?.dailyPrice | number: '1.0-0' }}
+                €/day
+              </span>
+              <span class="bike-info_price-week">
+                {{
+                  (bike?.weekly_price || bike?.weeklyPrice) * 7
+                    | number: '1.0-0'
+                }}
+                €/week
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #mobileBikeTemplate>
+  <lnr-bike-card-mobile [bike]="bike"></lnr-bike-card-mobile>
+</ng-template>

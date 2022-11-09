@@ -1,0 +1,179 @@
+<div class="wrap-home-page">
+  <div class="home-page_mobile d-block d-md-none">
+    <div
+      class="wrap-main-img-mobile"
+      [ngStyle]="{ 'background-image': 'url(' + heroShotUrl + ')' }"
+    >
+      <div class="container">
+        <div class="row">
+          <h1 class="home-page_subtitles col-sm-6 col-md-12 heading-3">
+            {{ 'home.landing-section-header' | translate }}
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="wrap-searching-form">
+      <lnr-searching-form></lnr-searching-form>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="home-page_desktop m-large d-none d-md-block">
+      <div class="row">
+        <div class="col-sm-12 col-md-10">
+          <h1 class="home-page_subtitles heading-3">
+            {{ 'home.landing-section-header' | translate }}
+          </h1>
+          <p>{{ 'home.landing-section-subheader' | translate }}</p>
+        </div>
+      </div>
+      <div class="row home-page_content flex direction-row">
+        <lnr-searching-form></lnr-searching-form>
+        <div class="wrap-main-img">
+          <img alt="" src="{{ heroShotUrl }}" />
+        </div>
+      </div>
+    </div>
+    <div class="row m-large d-none d-sm-block">
+      <div class="col-md-7 col-sm-12">
+        <h3 class="home-page_subtitles">
+          {{ 'home.featured-bikes-header' | translate }}
+        </h3>
+        <p class="m-b-0">{{ 'home.featured-bikes-subheader' | translate }}</p>
+      </div>
+      <div class="col-md-12">
+        <lnr-bike-tile-swiper></lnr-bike-tile-swiper>
+      </div>
+    </div>
+    <div class="row m-large">
+      <div class="col-md-10">
+        <h3 class="home-page_subtitles">
+          {{ 'rent-a-bike.info-section.header' | translate }}
+        </h3>
+      </div>
+      <div class="col-md-4 col-sm-12 m-t-1">
+        <lnr-our-pros
+          [image]="'../../../assets/images/icons/home/rent-easy.svg'"
+          [title]="'rent-a-bike.info-section.choice-title' | translate"
+          [paragraph]="'rent-a-bike.info-section.choice-content' | translate"
+        >
+        </lnr-our-pros>
+      </div>
+      <div class="col-md-4 col-sm-12 m-t-1">
+        <lnr-our-pros
+          [image]="'../../../assets/images/icons/home/rent-variety.svg'"
+          [title]="'rent-a-bike.info-section.easy-title' | translate"
+          [paragraph]="'rent-a-bike.info-section.easy-content' | translate"
+        >
+        </lnr-our-pros>
+      </div>
+      <div class="col-md-4 col-sm-12 m-t-1">
+        <lnr-our-pros
+          [image]="'../../../assets/images/icons/home/rent-secure.svg'"
+          [title]="'rent-a-bike.info-section.price-title' | translate"
+          [paragraph]="'rent-a-bike.info-section.price-content' | translate"
+        >
+        </lnr-our-pros>
+      </div>
+    </div>
+
+    <div class="row m-large d-block d-sm-none">
+      <lnr-popular-destination></lnr-popular-destination>
+    </div>
+    <div class="row">
+      <div class="col-md-10 col-sm-12">
+        <h3 class="home-page_subtitles">
+          {{ 'home.featured-tiles-header' | translate }}
+        </h3>
+        <p>{{ 'home.featured-tiles-subheader' | translate }}</p>
+      </div>
+      <div class="col-md-12">
+        <lnr-brands-swiper></lnr-brands-swiper>
+      </div>
+      <div class="home-page_button m-t-1 col-md-8">
+        <button
+          mat-flat-button
+          class="m-t-1"
+          routerLink="./brands"
+          color="accent"
+        >
+          <span class="white regular heading-6">
+            {{ 'home.see-all-brands-and-bikes' | translate }}
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="d-none row d-sm-block m-large">
+      <lnr-popular-destination></lnr-popular-destination>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-sm-12 wrap-events-block">
+        <h3 class="home-page_subtitles">
+          {{ 'home.events_block.title' | translate }}
+        </h3>
+        <p>
+          {{ 'home.events_block.subtitle' | translate }}
+        </p>
+      </div>
+      <div class="col-md-12">
+        <lnr-events-swiper></lnr-events-swiper>
+      </div>
+      <div class="home-page_button col-md-10 m-t-1">
+        <button mat-flat-button routerLink="./events" color="accent">
+          <span class="white regular heading-6">
+            {{ 'shared.button_see_all_events' | translate }}
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="row m-large">
+      <div class="col-sm-12 col-md-10">
+        <h3 class="home-page_subtitles">
+          {{ 'rent-a-bike.testmonials-section.header' | translate }}
+        </h3>
+        <p>
+          {{ 'rent-a-bike.testmonials-section.subheader' | translate }}
+        </p>
+      </div>
+      <div class="col-md-12">
+        <lnr-testimonal-swiper></lnr-testimonal-swiper>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-8">
+        <h3 class="home-page_subtitles">
+          {{ 'home.featured-cities-header' | translate }}
+        </h3>
+        <p>
+          {{ 'home.featured-cities-subheader' | translate }}
+        </p>
+      </div>
+      <div class="col-md-12">
+        <lnr-recommended-destinations></lnr-recommended-destinations>
+        <div class="home-page_button">
+          <button
+            mat-flat-button
+            class="m-t-2 m-b-2"
+            routerLink="./cities"
+            color="accent"
+          >
+            <span class="white regular heading-6">
+              {{ 'home.button_see_location' | translate }}
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row m-large">
+      <div class="col-sm-12 col-md-10">
+        <h3 class="home-page_subtitles">
+          {{ 'seo.top_locations' | translate }}
+        </h3>
+      </div>
+      <div class="col-md-12">
+        <lnr-top-location></lnr-top-location>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+@import 'utils/utils';
+@import 'variables';
+
+.lnr {
+  .lnr-dialog-header {
+    position: relative;
+  }
+}
+
+@include if-smaller-than(md) {
+  .cdk-overlay-pane {
+    mat-dialog-container {
+      border-radius: $border-radius;
+
+      .mat-dialog-title {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

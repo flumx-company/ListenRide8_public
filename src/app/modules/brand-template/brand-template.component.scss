@@ -1,0 +1,24 @@
+@import 'utils/utils';
+@import 'variables';
+
+.brand-page {
+  &_column-img {
+    height: 18rem;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    @include if-smaller-than(sm) {
+      height: 15rem;
+    }
+  }
+
+  &_technical-img {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  ::ng-deep mat-divider {
+    border-top-color: $input-border;
+  }
+
+}

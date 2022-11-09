@@ -1,0 +1,116 @@
+@import 'variables';
+@import "utils/utils";
+
+.bike-tile-map-view {
+  background-color: $white;
+  border: 0.1rem solid $light-grey;
+  border-radius: 0.4rem;
+  height: auto;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+
+  .bike-available {
+    background-color: rgba($grey-background, 0.8);
+    border-radius: 0.4rem;
+    color: $white-font-color;
+    font-size: $small-fontsize;
+    padding: 0.4rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+
+  .mat-icon {
+    height: 1.6rem;
+    width: 1.8rem;
+  }
+
+  .bike-info {
+    padding: 0.8rem;
+
+    &_brand {
+      color: $dark-text-color;
+    }
+
+    &_price-day {
+      color: $main-blue;
+      white-space: nowrap;
+    }
+
+    &_brand,
+    &_price-day {
+      font-size: $h5-fontsize;
+
+      @include if-bigger-than(xxl) {
+        font-size: $h4-fontsize;
+      }
+    }
+
+    &_name,
+    &_price-week {
+      font-size: $small-fontsize;
+    }
+
+    &_name {
+      color: $dark-text-color;
+    }
+
+    &_size {
+      color: $light-text-color;
+      font-size: $small-fontsize;
+      margin-top: 0.4rem;
+    }
+
+    &_rating {
+      color: $light-text-color;
+      font-size: $small-fontsize;
+      margin-top: 0.4rem;
+      width: 8.4rem;
+    }
+
+    &_price {
+      line-height: 2rem;
+      width: 8.4rem;
+    }
+
+    &_content {
+      line-height: 2rem;
+      max-width: 61%;
+    }
+
+    &_price-week {
+      white-space: nowrap;
+    }
+
+    &_price-xs {
+      display: none;
+    }
+
+    &_name,
+    &_price-week,
+    &_size,
+    &_rating {
+      @include if-smaller-than(sm) {
+        font-size: $small-fontsize - 0.2rem;
+      }
+    }
+  }
+
+  &_wrap-img {
+    border: 0.1rem solid $light-grey;
+    position: relative;
+    width: 100%;
+
+    img {
+      border-top-left-radius: 0.4rem;
+      border-top-right-radius: 0.4rem;
+      height: 100%;
+      width: 100%;
+
+      @include if-smaller-than(sm) {
+        max-width: 20rem;
+      }
+    }
+  }
+}
